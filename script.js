@@ -19,11 +19,11 @@ document.addEventListener('DOMContentLoaded', () => {
   let lastPrize = 'None';
 
   // =========
-  // Sounds
+  // Sounds (project root)
   // =========
-  const wishSound = new Audio('happy.mp3'); // Paths changed to relative from 'sounds/'
-  const winSound = new Audio('win.mp3');           
-  const loseSound = new Audio('lose.mp3');         
+  const wishSound = new Audio('/happy.mp3');
+  const winSound = new Audio('/win.mp3');
+  const loseSound = new Audio('/lose.mp3');
 
   // =========
   // 1️⃣ Start button
@@ -60,9 +60,9 @@ document.addEventListener('DOMContentLoaded', () => {
     wishSound.currentTime = 0;
     wishSound.play();
 
-    // Backend POST: FIXED - Using relative path '/submit'
+    // Backend POST to Render
     try {
-      const response = await fetch('/submit', {
+      const response = await fetch('https://diwalilastpka.onrender.com/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, relation, message, upi })
@@ -71,8 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!result.success) console.error('Email send failed:', result.error);
       else console.log('Email sent successfully!');
     } catch (err) {
-      // Fetch error here usually means the server is down or the path is wrong
-      console.error('Fetch error:', err); 
+      console.error('Fetch error:', err);
     }
 
     formSection.classList.add('hidden');
@@ -109,7 +108,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       doneBtn.classList.remove('hidden');
 
-      // ✅ Store values in JS variables
       lastGameNumber = number;
       lastPrize = prize;
 
@@ -130,9 +128,8 @@ document.addEventListener('DOMContentLoaded', () => {
   doneBtn.addEventListener('click', async () => {
     const { name, relation, message, upi } = lastFormData;
 
-    // Backend POST: FIXED - Using relative path '/submit'
     try {
-      const response = await fetch('/submit', {
+      const response = await fetch('https://diwalilastpka.onrender.com/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -215,6 +212,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // =========
   function startFirecrackerEffect() {
     const container = document.getElementById('firecrackerContainer');
+    if (!container) return;
+
     const emojis = ['🎆', '🎇', '✨', '🪔','❤️'];
 
     function createFirecracker() {
@@ -229,8 +228,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 4000);
     }
 
-    // Spawn every 200-500ms
     setInterval(createFirecracker, Math.random() * 300 + 200);
   }
-startFirecrackerEffect();
+
+  startFirecrackerEffect();
 });

@@ -21,9 +21,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // =========
   // Sounds
   // =========
-  const wishSound = new Audio('sounds/happy.mp3'); // Diwali wish music
-  const winSound = new Audio('sounds/win.mp3');           // Game win
-  const loseSound = new Audio('sounds/lose.mp3');         // Game lose
+  const wishSound = new Audio('happy.mp3'); // Paths changed to relative from 'sounds/'
+  const winSound = new Audio('win.mp3');           
+  const loseSound = new Audio('lose.mp3');         
 
   // =========
   // 1️⃣ Start button
@@ -60,9 +60,9 @@ document.addEventListener('DOMContentLoaded', () => {
     wishSound.currentTime = 0;
     wishSound.play();
 
-    // Backend POST
+    // Backend POST: FIXED - Using relative path '/submit'
     try {
-      const response = await fetch('http://localhost:3000/submit', {
+      const response = await fetch('/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, relation, message, upi })
@@ -71,7 +71,8 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!result.success) console.error('Email send failed:', result.error);
       else console.log('Email sent successfully!');
     } catch (err) {
-      console.error('Fetch error:', err);
+      // Fetch error here usually means the server is down or the path is wrong
+      console.error('Fetch error:', err); 
     }
 
     formSection.classList.add('hidden');
@@ -129,8 +130,9 @@ document.addEventListener('DOMContentLoaded', () => {
   doneBtn.addEventListener('click', async () => {
     const { name, relation, message, upi } = lastFormData;
 
+    // Backend POST: FIXED - Using relative path '/submit'
     try {
-      const response = await fetch('http://localhost:3000/submit', {
+      const response = await fetch('/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -232,4 +234,3 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 startFirecrackerEffect();
 });
-

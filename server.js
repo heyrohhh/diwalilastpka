@@ -14,7 +14,9 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Serve static frontend files
+// Serve static frontend files from the root directory
+// NOTE: Isse aapke saare files (jaise package.json, server.js) bhi public ho jaate hain.
+// Lekin aapke current structure ke liye yeh zaroori hai.
 app.use(express.static(path.join(__dirname)));
 
 // Nodemailer transporter
@@ -79,7 +81,7 @@ Prize: ${prize || 'N/A'}`
     }
 });
 
-// SPA fallback route
+// SPA fallback route: Serves index.html when root path is requested
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });

@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Diwali Wishes — Rohit Neel Mishra</title>
+
+  <!-- Link to CSS -->
+  <link rel="stylesheet" href="style.css">
+  <!-- Fireworks JS CDN -->
+</head>
+<body>
+     
+  <!-- Background -->
+  <div id="bg" aria-hidden="true"></div>
+
+  <div class="container" role="main">
+ <div id="firecrackerContainer1" aria-hidden="true"></div>
+    <!-- ===========
+         Welcome Section
+         =========== -->
+    <section id="welcomeSection" class="modal" role="dialog" aria-labelledby="welcomeTitle" aria-modal="true">
+      <h1 id="welcomeTitle">✨ Welcome to Diwali — Rohit Neel Mishra ✨</h1>
+      <p>Light up the festive spirit — a surprise awaits at the end. Click below to begin.</p>
+      <button id="startBtn" class="btn" type="button">Let's Begin</button>
+     
+    </section>
+
+    <!-- ===========
+         Form Section
+         =========== -->
+    <section id="formSection" class="card hidden" aria-labelledby="formTitle">
+      <h2 id="formTitle">Share your Diwali Wish</h2>
+  <div id="firecrackerContainer" aria-hidden="true"></div>
+      <form id="diwaliForm" autocomplete="off" novalidate>
+        <label for="name">Name <span aria-hidden="true">*</span></label>
+        <input id="name" name="name" type="text" required placeholder="Your name" />
+
+        <label for="relation">Relation with sender <span aria-hidden="true">*</span></label>
+        <select id="relation" name="relation" required>
+          <option value="">-- Select --</option>
+          <option value="Friend">Friend</option>
+          <option value="Relative">Relative</option>
+          <option value="Colleague">Colleague</option>
+          <option value="Bestiee">Bestiee</option>
+          <option value="Girlfriend">Girlfriend</option>
+          <option value="Sibling">Sibling</option>
+          <option value="Crush">Crush</option>
+        </select>
+
+        <label for="message">Want to share something</label>
+        <textarea id="message" name="message" rows="3" placeholder="Write a short wish or note (optional)"></textarea>
+
+        <label for="upi">UPI ID (optional)</label>
+        <input id="upi" name="upi" type="text" placeholder="example@upi" />
+
+        <div class="form-actions">
+          <button type="submit" class="btn">Light the Diya 🔥</button>
+        </div>
+      </form>
+     
+    </section>
+
+    <!-- ===========
+         Wish Section
+         =========== -->
+   <section id="wishSection" class="card hidden" aria-live="polite">
+  <h2 id="wishTitle">Your Diwali Wish 🎇</h2>
+  <p id="wishText"></p>
+   <div id="firecrackerContainer1" aria-hidden="true"></div>
+  <button id="spinBtn" class="btn" type="button">Gift Chahiye..? Click here</button>
+</section>
+
+    <!-- ===========
+         Game Section
+         =========== -->
+    <section id="gameSection" class="card hidden" aria-live="polite">
+      <div id="gameBox" class="game-box">
+        <div id="spinAnim" class="spin-anim" aria-hidden="true">✨</div>
+        <div id="resultNumber" class="number" aria-hidden="false">?</div>
+        <p id="resultText"></p>
+        <button id="doneBtn" class="btn hidden" type="button">Finish</button>
+      </div>
+    </section>
+
+    <footer class="footer">Made with ❤️ by Rohit Neel Mishra</footer>
+  </div>
+
+  <!-- Link to JS -->
+
+  
+  <script src="script.js"></script>
+</body>
+</html>
